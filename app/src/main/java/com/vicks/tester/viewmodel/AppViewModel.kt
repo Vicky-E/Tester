@@ -13,9 +13,13 @@ class AppViewModel(application: Application): AndroidViewModel(application) {
 
 
     fun startGame(){
-        gameState = GameState()
+        println("appdebug game starting...")
+        //gameState = GameState()
         gameState.randomNumber = Random.nextInt(10)
         gameState.isStart.value = true
+        gameState.message.value = ""
+        gameState.isCorrect.value = false
+        println("appdebug is start = "+ gameState.isStart.value)
     }
     fun check(){
         var guess = 0
@@ -42,7 +46,9 @@ class AppViewModel(application: Application): AndroidViewModel(application) {
 
     }
     fun endGame(){
-        gameState = GameState()
+        gameState.isStart.value = false
+        gameState.message.value = ""
+        gameState.isCorrect.value = false
     }
 }
 
